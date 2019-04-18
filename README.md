@@ -585,9 +585,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 請參閱 https://wifiboy.club/category/9/wifiboy32-esp32 檢視「如何安裝 Arduino IDE for WiFiBoy32」
 
 
-### 2. 從 github 取得 blinkxx 相關資料
+### 2. 從 github 取得 fvm-blinkxx 相關資料
 
-	git clone https://github.com/samsuanchen/blinkxx
+	git clone https://github.com/samsuanchen/fvm-blinkxx
 	
 
 ## FVM 機制 功能 簡要說明
