@@ -429,30 +429,29 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 <img src="jpg/arduinoIDE-blink12.jpg" width=400>
 
 
-		// blink12.ino having 3 control variable to test
-		#define LED_BUILTIN 16					  // for WIFIBOY
-		int  timeToChange = 1000;				  // time to change
-		int levelToChange = HIGH;				  // level to change
-		int  led          = LED_BUILTIN;			  // set GPIO 16 as led pin number
-		int  delayHIGH    = 1000;				  // keep 1000 ms for led pin level HIGH
-		int  delayLOW     = 1000;				  // keep 1000 ms for led pin level LOW
-		#include <fvm.h>                                        // ##### 1.1. load FVM class, the Forth virtual machine
-		#include <fvm_6Wordset.h>                     		// ##### 1.2. load wordset for FVM
-		FVM F;                                                  // ##### 1.3. define F as an instence of FVM
-		void setup() {
-		  F.init( 115200 );                       		// ##### 3.1. in setup(), initialize F
-		  F.newVariable( "delayHIGH", &delayHIGH );		// ##### 4.1. add address as new constant word delayHIGH in F
-		  F.newVariable( "delayLOW" , &delayLOW  );		// ##### 4.2. add address as new constant word delayLOW  in F
-		  F.newVariable( "led"      , &led       );		// ##### 4.3. add address as new constant word led       in F
-		  pinMode(led, OUTPUT);                                   // set led pin as output level become LOW)
-		}
-		void loop() {
-		  if( millis() < timeToChange ) return;                   // wait until time to change
-		  digitalWrite( led, levelToChange );                     // set led pin level
-		  timeToChange += levelToChange ? delayHIGH : delayLOW;   // set next time to change
-		  levelToChange = HIGH - levelToChange;                   // set next level to change
-		}
-
+	// blink12.ino having 3 control variable to test
+	#define LED_BUILTIN 16	                                // for WIFIBOY
+	int  timeToChange = 1000;                               // time to change
+	int levelToChange = HIGH;                               // level to change
+	int  led          = LED_BUILTIN;                        // set GPIO 16 as led pin number
+	int  delayHIGH    = 1000;                               // keep 1000 ms for led pin level HIGH
+	int  delayLOW     = 1000;                               // keep 1000 ms for led pin level LOW
+	#include <fvm.h>                                        // ##### 1.1. load FVM class, the Forth virtual machine
+	#include <fvm_6Wordset.h>                               // ##### 1.2. load wordset for FVM
+	FVM F;                                                  // ##### 1.3. define F as an instence of FVM
+	void setup() {
+	  F.init( 115200 );                                     // ##### 3.1. in setup(), initialize F
+	  F.newVariable( "delayHIGH", &delayHIGH );             // ##### 4.1. add address as new constant word delayHIGH in F
+	  F.newVariable( "delayLOW" , &delayLOW  );             // ##### 4.2. add address as new constant word delayLOW  in F
+	  F.newVariable( "led"      , &led       );             // ##### 4.3. add address as new constant word led       in F
+	  pinMode(led, OUTPUT);                                 // set led pin as output level become LOW)
+	}
+	void loop() {
+	  if( millis() < timeToChange ) return;                 // wait until time to change
+	  digitalWrite( led, levelToChange );                   // set led pin level
+	  timeToChange += levelToChange ? delayHIGH : delayLOW; // set next time to change
+	  levelToChange = HIGH - levelToChange;                 // set next level to change
+	}
 
 
 這範例 類似 blink02。主要是希望藉以複習: 如何將 blink11 中的常數 以 led, delayHIGH, delayLOW 三個控制變數取代。
@@ -510,39 +509,39 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 <img src="jpg/arduinoIDE-blink13.jpg" width=400>
 
 
-		// blink12.ino having 3 control variable to test
-		#define LED_BUILTIN 16					  // for WIFIBOY
-		int  timeToChange = delayLOW;				  // time to change
-		int levelToChange = HIGH;				  // level to change
-		int  led          = LED_BUILTIN;			  // set GPIO 16 as led pin number
-		int  delayHIGH    = 1000;				  // keep 1000 ms for led pin level HIGH
-		int  delayLOW     = 1000;				  // keep 1000 ms for led pin level LOW
+		// blink13.ino having new words to execute
+		#define LED_BUILTIN 16                                  // for WIFIBOY
+		int  timeToChange = delayLOW;                           // time to change
+		int levelToChange = HIGH;                               // level to change
+		int led           = LED_BUILTIN;                        // set GPIO 16 as led pin number
+		int delayHIGH     = 1000;                               // keep 1000 ms for led pin level HIGH
+		int delayLOW      = 1000;                               // keep 1000 ms for led pin level LOW
 		#include <fvm.h>                                        // ##### 1.1. load FVM class, the Forth virtual machine
-		#include <fvm_0Wordset.h>                     		// ##### 1.2. load no wordset for FVM
+		#include <fvm_0Wordset.h>                               // ##### 1.2. load no wordset for FVM
 		FVM F;                                                  // ##### 1.3. define F as an instence of FVM
-		void setDelayHIGH() { delayHIGH=F.dPop(); }		// ##### 2.1. define the function setDelayHIGH
-		void setDelayLOW()  { delayLOW =F.dPop(); }		// ##### 2.2. define the function setDelayLOW
-		void setLed()       { led      =F.dPop(); }		// ##### 2.3. define the function setLed
-		void output() { pinMode(F.dPop(), OUTPUT); }		// ##### 2.4. define the function output
-		void input()  { pinMode(F.dPop(),  INPUT); }		// ##### 2.5. define the function input
-		void high()  { digitalWrite(F.dPop(), HIGH); }		// ##### 2.6. define the function high
-		void low()   { digitalWrite(F.dPop(),  LOW); }		// ##### 2.7. define the function low
+		void setDelayHIGH()   { delayHIGH=F.dPop(); }           // ##### 2.1. define the function setDelayHIGH
+		void setDelayLOW()    { delayLOW =F.dPop(); }           // ##### 2.2. define the function setDelayLOW
+		void setLed()         { led      =F.dPop(); }           // ##### 2.3. define the function setLed
+		void output()  { pinMode(F.dPop(), OUTPUT); }           // ##### 2.4. define the function output
+		void input()   { pinMode(F.dPop(),  INPUT); }           // ##### 2.5. define the function input
+		void high() { digitalWrite(F.dPop(), HIGH); }           // ##### 2.6. define the function high
+		void low()  { digitalWrite(F.dPop(),  LOW); }           // ##### 2.7. define the function low
 		void setup() {
-		  F.init( 115200 );                       		// ##### 3.1. in setup(), initialize F
-		  F.newPrimitive( "setDelayHIGH", setDelayHIGH );	// ##### 4.1. add new primitive word setDelayHIGH in F
-		  F.newPrimitive( "setDelayLOW",  setDelayLOW  );	// ##### 4.2. add new primitive word setDelayLOW  in F
-		  F.newPrimitive( "setLed"     ,  setLed       );	// ##### 4.3. add new primitive word setLed       in F
-		  F.newPrimitive( "output"     ,  output       );	// ##### 4.3. add new primitive word output       in F
-		  F.newPrimitive(  "input"     ,   input       );	// ##### 4.3. add new primitive word  input       in F
-		  F.newPrimitive(   "high"     ,    high       );	// ##### 4.3. add new primitive word   high       in F
-		  F.newPrimitive(    "low"     ,     low       );	// ##### 4.3. add new primitive word    low       in F
-		  pinMode(led, OUTPUT);                                   // set led pin as output level become LOW)
+		  F.init( 115200 );                                     // ##### 3.1. in setup(), initialize F
+		  F.newPrimitive( "setDelayHIGH", setDelayHIGH );       // ##### 4.1. add new primitive word setDelayHIGH in F
+		  F.newPrimitive( "setDelayLOW",  setDelayLOW  );       // ##### 4.2. add new primitive word setDelayLOW  in F
+		  F.newPrimitive( "setLed"     ,  setLed       );       // ##### 4.3. add new primitive word setLed       in F
+		  F.newPrimitive( "output"     ,  output       );       // ##### 4.3. add new primitive word output       in F
+		  F.newPrimitive(  "input"     ,   input       );       // ##### 4.3. add new primitive word  input       in F
+		  F.newPrimitive(   "high"     ,    high       );       // ##### 4.3. add new primitive word   high       in F
+		  F.newPrimitive(    "low"     ,     low       );       // ##### 4.3. add new primitive word    low       in F
+		  pinMode(led, OUTPUT);                                 // set led pin as output level become LOW)
 		}
 		void loop() {
-		  if( millis() < timeToChange ) return;                   // wait until time to change
-		  digitalWrite( led, levelToChange );                     // set led pin level
-		  timeToChange += levelToChange ? delayHIGH : delayLOW;   // set next time to change
-		  levelToChange = HIGH - levelToChange;                   // set next level to change
+		  if( millis() < timeToChange ) return;                 // wait until time to change
+		  digitalWrite( led, levelToChange );                   // set led pin level
+		  timeToChange += levelToChange ? delayHIGH : delayLOW; // set next time to change
+		  levelToChange = HIGH - levelToChange;                 // set next level to change
 		}
 
 

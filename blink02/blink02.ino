@@ -4,7 +4,7 @@ int  led          = LED_BUILTIN; // led pin GPIO number
 int  delayHIGH    = 1000;        // delay period keeping led pin level HIGH
 int  delayLOW     = 1000;        // delay period keeping led pin level LOW
 #include <fvm.h>                                  // ##### 1.1. load FVM class, the Forth virtual machine
-#include <fvm_6Wordset.h>                         // ##### 1.2. load wordset for FVM
+#include <fvm_7Wordset.h>                         // ##### 1.2. load wordset for FVM
 FVM F;                                            // ##### 1.3. define F as an instence of FVM
 void setup() {
   F.init( 115200 );                               // ##### 3.1. in setup(), initialize F 
