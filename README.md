@@ -33,7 +33,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink00 範例 
 
 
-<img src="jpg/arduinoIDE.jpg" height=300>
+<img src="jpg/arduinoIDE-blink00.jpg" height=300>
 
 
 		// blink00.ino the Arduino basic blink
@@ -55,6 +55,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 
 ## blink01 範例 
+
+
+<img src="jpg/arduinoIDE-blink01.jpg" height=300>
 
 
 		// blink01.ino having F as an instence of FVM to play
@@ -139,6 +142,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink02 範例 
 
 
+<img src="jpg/arduinoIDE-blink02.jpg" height=300>
+
+
 		// blink02.ino having 3 control variables to test
 		#define LED_BUILTIN 16           // for WIFIBOY
 		int  led          = LED_BUILTIN; // led pin GPIO number
@@ -214,6 +220,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 
 ## blink03 範例
+
+
+<img src="jpg/arduinoIDE-blink03.jpg" height=300>
 
 
 		// blink03.ino having new words to execute
@@ -314,6 +323,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink10 範例
 
 
+<img src="jpg/arduinoIDE-blink10.jpg" height=300>
+
+
 		// blink10.ino not using delay() to keep led pin level LOW/HIGH
 		#define LED_BUILTIN 16                      // for WIFIBOY
 		int  timeToChange = 1000;                   // time to change
@@ -335,6 +347,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 
 ## blink11 範例
+
+
+<img src="jpg/arduinoIDE-blink11.jpg" height=300>
 
 
 		// blink11.ino having F as an instence of FVM to play
@@ -408,6 +423,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 
 ## blink12 範例
+
+
+<img src="jpg/arduinoIDE-blink12.jpg" height=300>
 
 
 		// blink12.ino having 3 control variable to test
@@ -486,6 +504,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 
 ## blink13 範例
+
+
+<img src="jpg/arduinoIDE-blink13.jpg" height=300>
 
 
 		// blink12.ino having 3 control variable to test
