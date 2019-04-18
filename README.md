@@ -277,7 +277,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 		void low()   { digitalWrite(F.dPop(),  LOW); }    // ##### 2.7. define the function low
 
 
-在 這些 function 中, 我們 用 F.dPop() 從 資料推疊 (data stack) 取得 執行該 function 所需的資料。 
+     在 這些 function 中, 我們 用 F.dPop() 從 資料推疊 (data stack) 取得 執行該 function 所需的資料。 
 
 
 2. 在原來 blink02.ino 的 setup() 中, 以 newPrimitiv() 取代 newVariable(), 來定義 3 個設定變數值的 新指令, 以及 4 個 IO 指令。
