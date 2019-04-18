@@ -630,6 +630,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 	F.newPrimitive(name,func)	create new primitive type word of given name to run given function.
 	F.newVariable(name,address)	create new variable type word of given name to return given address.
 	F.dPop()			pop data as integer from data stack
+	F.parseToken(delimiter)		parse string in tib until given delimiter
 
 
 ## 虛擬監控機制 test.txt 範例 引用的指令 簡要說明
