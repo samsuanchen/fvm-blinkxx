@@ -292,12 +292,12 @@ void FVM::forgetWord(char* name){
 	} else if(T->warning) print("\nwarning !!! 0x"), printHex(*name), print(" \""), print(name+1), print("\" unDef ");
 }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
-Word * FVM::newPrimitive(char*name, FuncP code, char*codeName){
+Word * FVM::newPrimitive(char*name, char*codeName, FuncP code){
 	createWord( 0, 0, uniqueNStr(name), code, (int) codeName ); }
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 Word * FVM::newPrimitive(char*name, FuncP code){
 	char*s = uniqueNStr(name);
-	newPrimitive( s, code, s+1 ); }
+	newPrimitive( s, s+1, code ); }
 ///////////////////////////////////////////////////////////////////////////////////////
 Word * FVM::newConstant(char*name, int i){
 	createWord( 0, 0, uniqueNStr(name), (FuncP)i_doCon, i ); }

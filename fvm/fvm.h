@@ -182,7 +182,7 @@ class FVM {
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     Word  * createWord(uint16_t flag, uint16_t id, char*name, FuncP code, int data);// create forth word
     void    forgetWord(char*name);
-	Word  * newPrimitive(char*name, FuncP code, char*codeName);
+	Word  * newPrimitive(char*name, char*codeName, FuncP code);
     Word  * newPrimitive(char*,FuncP);// create forth primitive word of given name and given code.
     Word  * newConstant(char*,int); // create forth constant word of given name and value.
     Word  * newVariable(char*,int*);// create forth constant word of given name and value.
