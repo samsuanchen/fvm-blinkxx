@@ -1,4 +1,4 @@
-// fvm_6Wordset.h
+// fvm_7Wordset.h
 #ifndef WORD_SET_H
 #define WORD_SET_H
 //                    "/////////////////////////////////////////////////"
@@ -20,6 +20,11 @@ CONST( 0x000, HIDEN, "\x05" "(con)", _doCon, _doCon );
 static void _store () { int *a=(int*)F.dPop(); *a=F.dPop(); }
 PRIMI( 0x023, 0, "\x01" "!", _store, _store );
 #define LAST WORD( _store ) 
+//////////////////////////////////////////////////////////////////////////
+// W034 ( <string>) ( -- ) ignore string delimited by right parenthesis.
+static void _paren() { F.parseToken(')'); }
+PRIMI( 0x034, IMMED, "\x01" "(", _paren, _paren );
+#define LAST WORD( _paren ) 
 //////////////////////////////////////////////////////////////////////////
 // W508 output ( pin -- ) set pin mode as OUTPUT
 static void _output () { uint8_t pin=F.dPop(); pinMode(pin,OUTPUT); }
