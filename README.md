@@ -12,7 +12,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 在原程式執行同時, 接受另外定義的指令 進行 檢視、監控、測試、 ... 等工作,  或 直接改變 程式 執行狀態 與 效果。
 
 
-首先, 在所提供的 fvm-blinkxx 資料夾 中 有 fvm 與 wifiboy_lib 兩個子目錄, 以及 fvm_0wordset、fvm_6wordset、fvm_wifiboy_libWordset
+首先, 在所提供的 fvm-blinkxx 資料夾 中 有 fvm 與 wifiboy_lib 兩個子目錄, 以及 fvm_0wordset、fvm_7wordset、fvm_wifiboy_libWordset
 三個指令集, 請先 複製 這些子目錄 到 Arduino user 的 libraries 工作子目錄。
 例如 其在 windows 通常可能的 路徑是:
 
@@ -151,7 +151,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 		int  delayHIGH    = 1000;        // delay period keeping led pin level HIGH
 		int  delayLOW     = 1000;        // delay period keeping led pin level LOW
 		#include <fvm.h>                                  // ##### 1.1. load FVM class, the Forth virtual machine
-		#include <fvm_6Wordset.h>                         // ##### 1.2. load wordset for FVM
+		#include <fvm_7Wordset.h>                         // ##### 1.2. load wordset for FVM
 		FVM F;                                            // ##### 1.3. define F as an instence of FVM
 		void setup() {
 		  F.init( 115200 );                               // ##### 3.1. in setup(), initialize F 
@@ -170,7 +170,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 這範例 主要是希望將 blink01.ino 中的常數 以 led, delayHIGH, delayLOW 這三個控制變數 來 取代, 以便 在不改變原程式執行流程下 進行監控。
 為了這樣簡單的監控, 其實我們並不需要 #include <fvm_wifiboy_libWordset.h> 載入那麼多事先定義的指令。在此, 我們試用一個精簡版的指令集。
-改用 #include <fvm_6Wordset.h> 只載入 6 個所需指令。
+改用 #include <fvm_7wordset.h> 只載入 7 個所需指令。
 接著, 在 blink01.ino 中多加幾行, 就可 利用 所載入的 驚嘆號 指令 來直接改變 這些控制變數的 值 (隨後詳加說明)。
 
 1. 在原 blink01.ino 的 #include <fvm.h> 前, 多加如下 3 行, 宣告 led, delayHIGH, delayLOW 為 3 個可讓 FVM 監控的 變數 以及 預設值:
@@ -437,7 +437,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 	int  delayHIGH    = 1000;                               // keep 1000 ms for led pin level HIGH
 	int  delayLOW     = 1000;                               // keep 1000 ms for led pin level LOW
 	#include <fvm.h>                                        // ##### 1.1. load FVM class, the Forth virtual machine
-	#include <fvm_6Wordset.h>                               // ##### 1.2. load wordset for FVM
+	#include <fvm_7Wordset.h>                               // ##### 1.2. load wordset for FVM
 	FVM F;                                                  // ##### 1.3. define F as an instence of FVM
 	void setup() {
 	  F.init( 115200 );                                     // ##### 3.1. in setup(), initialize F
