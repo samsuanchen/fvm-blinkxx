@@ -90,7 +90,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 一旦 啟動了 FVM 機制, 在 閃 led 同時, 我們就可以打開 Arduino IDE 的 Serial Monitor。
 
 
-<img src="jpg/fvmSerialMonitor00.jpg" height=300>
+<img src="jpg/fvmSerialMonitor00.jpg" height=300> <img src="jpg/fvmSerialMonitor01.jpg" height=300>
 
 
 從其 input box 中, 可逐行輸入下列指令, 以關 led 燈、開屏幕背光、讓蜂鳴器發 C4 音、再多發 E4 與 A4 兩個音、讓蜂鳴器靜音、
