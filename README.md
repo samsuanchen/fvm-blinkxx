@@ -431,7 +431,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 		// blink12.ino having 3 control variable to test
 		#define LED_BUILTIN 16					  // for WIFIBOY
-		int  timeToChange = delayLOW;				  // time to change
+		int  timeToChange = 1000;				  // time to change
 		int levelToChange = HIGH;				  // level to change
 		int  led          = LED_BUILTIN;			  // set GPIO 16 as led pin number
 		int  delayHIGH    = 1000;				  // keep 1000 ms for led pin level HIGH
