@@ -4,7 +4,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 在 esp32 開發板, 例如 WiFiBoy classic (正反面如下二圖), 我們提供 一系列 簡單 blink 範例 (皆使 開發板的 led 燈 持續 亮 1 秒 滅 1 秒), 
 以逐步展示 如何為 Arduino 原 blink 程式同步開啟一個 可以自我監控檢視的 通道。
 
+
 <img src="jpg/wifiboy32greenFront.jpg" height=300> <img src="jpg/wifiboy32greenBack.jpg" height=300>
+
 
 這自我監控檢視的 機制, 就是可以在 Arduino 原 blink 程式中, 同步啟動 本文所提供的 FVM 機制 (virtual monitor)。
 在原程式執行同時, 接受另外定義的指令 進行 檢視、監控、測試、 ... 等工作,  或 直接改變 程式 執行狀態 與 效果。
@@ -86,6 +88,11 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 
 一旦 啟動了 FVM 機制, 在 閃 led 同時, 我們就可以打開 Arduino IDE 的 Serial Monitor。
+
+
+<img src="jpg/fvmSerialMonitor00.jpg.jpg" height=300>
+
+
 從其 input box 中, 可逐行輸入下列指令, 以關 led 燈、開屏幕背光、讓蜂鳴器發 C4 音、再多發 E4 與 A4 兩個音、讓蜂鳴器靜音、
 讓屏幕顯示一張照片 維持 1 秒鐘 然後關閉屏幕 (隨後分別詳加說明)。
 
