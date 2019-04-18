@@ -196,10 +196,10 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 就可以將下列指令, 逐行 反白 複製, 貼入 input box 中來執行, 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音。
 
 
-		50 delayLOW  !
-		50 delayHIGH !
-		25 led ! 25 output 17 output 17 high
-		25 input
+		50 delayLOW ! ( flash per second )
+		50 delayHIGH ! ( quick flash )
+		25 led ! 25 output 17 output 17 high ( buzzer clicking )
+		25 input ( turn of buzzer )
 
 
 第一行: 「50 delayLOW !」 其中的 驚嘆號 是一個事先定義的 指令, 讀作 store, 將所給值存入控制變數。 因此 這行 是將 delayLOW
@@ -297,10 +297,11 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 從 輸入格 中, 就可逐行輸入下列指令, 一樣可 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音 (隨後分別詳加說明)。
 
 
-		50 setDelayLOW
-		50 setDelayHIGH
-		25 setLed 25 output 17 output 17 high
-		25 input
+		50 setDelayLOW ( flash per second )
+		50 setDelayHIGH ( quick flash )
+		25 setLed 25 output 17 output 17 high ( buzzer clicking )
+		25 input ( turn of buzzer )
+
 
 
 第一行: 「50 setDelayLOW」 將 50 設為 delayLOW 這控制變數的 值 (原來的值 1000), 
@@ -393,12 +394,12 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 讓屏幕顯示一張照片 維持 1 秒鐘 然後關閉屏幕 (隨後分別詳加說明)。
 
 
-		16 input
-  		27 output 27 high
-		25 17 buzzerSetup buzzerOn 261.6 HZ
-		329.6 HZ 1000 ms 440.0 HZ
-		0 HZ
-		wb_init 0 0 128 160 img wb_drawImage  1000 ms 27 low
+		16 input ( turn off led )
+		27 output 27 high ( turn on screen back light )
+		25 17 buzzerSetup buzzerOn 261.6 HZ ( hum buzzer tone C4 )
+		329.6 HZ 1000 ms 440.0 HZ ( hum tone E4 1000 ms then A4 )
+		0 HZ ( turn off buzzer )
+		wb_init 0 0 128 160 img wb_drawImage 1000 ms 27 low ( show image 1000 ms )
 
 
 第一行: 「16 input」 將 led pin 腳 (GPIO 16) 的 pin mode 原為 OUTPUT 改為 INPUT, 這樣 led 就不再亮了。
@@ -480,10 +481,10 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 就可以將下列指令, 逐行 反白 複製, 貼入 input box 中來執行, 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音 (隨後分別詳加說明)。
 
 
-		50 delayLOW  !
-		50 delayHIGH !
-		25 led ! 25 output 17 output 17 high
-		25 input
+		50 delayLOW ! ( flash per second )
+		50 delayHIGH ! ( quick flash )
+		25 led ! 25 output 17 output 17 high ( buzzer clicking )
+		25 input ( turn of buzzer )
 
 
 第一行: 「50 delayLOW !」 其中的 驚嘆號 是一個事先定義的 指令, 讀作 store, 將所給值存入控制變數。 因此 這行 是將 delayLOW
@@ -579,10 +580,10 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 從 輸入格 中, 就可逐行輸入下列指令, 一樣可 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音 (隨後分別詳加說明)。
 
 
-		50 setDelayLOW
-		50 setDelayHIGH
-		25 setLed 25 output 17 output 17 high
-		25 input
+		50 setDelayLOW ( flash per second )
+		50 setDelayHIGH ( quick flash )
+		25 setLed 25 output 17 output 17 high ( buzzer clicking )
+		25 input ( turn of buzzer )
 
 
 第一行: 「50 setDelayLOW」 將 50 設為 delayLOW 這控制變數的 值 (原來的值 1000), 
