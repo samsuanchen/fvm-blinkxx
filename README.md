@@ -99,8 +99,8 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 <img src="jpg/fvmSerialMonitor00.jpg" width=400> <img src="jpg/fvmSerialMonitor01.jpg" width=400>
 
 請注意! 首次啟動 Serial Monitor 時, 記得其下緣需要點選「Carrige return」的選項。
-然後在上方 input box 中, 逐行 分別輸入下列指令, 點 右側 Send 按鈕, 就會: 關 led 燈、開屏幕背光、讓蜂鳴器發 C4 音、再多發 E4 與 A4 兩個音、讓蜂鳴器靜音、
-讓屏幕顯示一張照片 維持 1 秒鐘 然後關閉屏幕 (隨後分別詳加說明)。
+然後, 逐行 反白複製 下列指令, 貼入上方 input box 中, 點 右側 Send 按鈕, 就會: 關 led 燈、開屏幕背光、讓蜂鳴器發 C4 音、再多發 E4 與 A4 兩個音、讓蜂鳴器靜音、
+讓屏幕顯示一張照片 維持 1 秒鐘 然後關閉屏幕 (每行將隨後詳加說明)。
 
 
 		16 input ( turn off led )
