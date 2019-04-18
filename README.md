@@ -125,7 +125,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 第五行: 「0 HZ」使 蜂鳴器 靜音。
 
 
-第六行: 「wb_init」 啟動 繪圖系統, 「0 0 128 160 img wb_drawImage」在屏幕 0,0 位置 畫出 存放在 img 的影像 寬 128 高 160 的照片。
+第六行: 「wb_init」 啟動 wifiboy 屏幕繪圖, 「0 0 128 160 img wb_drawImage」在屏幕 0,0 位置 畫出 存放在 img 的影像 寬 128 高 160 的照片。
 「1000 ms」使影像顯示維持 1 秒。
 「27 low」 將屏幕背光 pin 腳 電位設為 LOW, 關閉 屏幕背光, 影像就不見了。
 
