@@ -167,9 +167,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 1. 在原 blink01.ino 的 #include <fvm.h> 前, 多加如下 3 行, 宣告 led, delayHIGH, delayLOW 為 3 個可讓 FVM 監控的 變數 以及 預設值:
 
 
-		int  led          = LED_BUILTIN; // led pin 腳 的 GPIO 編號
-		int  delayHIGH    = 1000;        // led pin 腳 維持 HIGH 電位 的 時間
-		int  delayLOW     = 1000;        // led pin 腳 維持 LOW  電位 的 時間
+		int  led          = LED_BUILTIN; // led pin GPIO number
+		int  delayHIGH    = 1000;        // delay period keeping led pin level HIGH
+		int  delayLOW     = 1000;        // delay period keeping led pin level LOW
 
 
 2. 以 led, delayHIGH, 與 delayLOW 三個 控制變數 分別取代原來 blink01.ino 中所對應的常數 LED_BUILTIN, 1000, 1000。
