@@ -1,0 +1,22 @@
+ 16 input ( turn off led )
+ 
+ 27 output 27 high ( turn on screen back light )
+ 
+ 25 17 buzzerSetup buzzerOn 261.6 HZ ( hum buzzer tone C4 )
+ 
+ 329.6 HZ 1000 ms 440.0 HZ ( hum tone E4 1000 ms then A4 )
+ 
+ 0 HZ ( turn off buzzer )
+ 
+ wb_init 0 0 128 160 img wb_drawImage 1000 ms 27 low ( show image 1000 ms )
+
+ : screenBlinks ( msDelay nToggles -- )
+   27 output ( set screen back light pin mode as OUTPUT )
+   ?dup ( duplicate nToggles if it's non-zero )
+   if 1- ( for-next counts down includes 0 )
+     for 27 toggle ( screen back light toggled ) dup ms ( delay specified time period )
+     next ( repeat toggling until nToggles times )
+   then drop ( pop msDelay )
+ ;
+
+ 200 5 screenBlinks

@@ -1,0 +1,7 @@
+ 50 setDelayLOW ( flash per second )
+ 
+ 50 setDelayHIGH ( quick flash )
+ 
+ 25 setLed 25 output 17 output 17 high ( buzzer clicking )
+ 
+ 25 input ( turn of buzzer )

@@ -1,0 +1,57 @@
+ ( This script could be pasted into Arduino IDE console
+   input box and click "Send" to
+   1. draw image, lines, and characters on WIFIBOY screen.
+   2. show how much time needed to draw.
+   3. blink faster while drawing.   )
+ ( ------------------------------------------------------ )
+ ( n for ... next )
+  : for ( -- h ) compile (for) here ; immediate
+  : next ( h -- ) compile (next) here - cell/ , ; immediate
+ ( flag if ... else ... then )
+ ( flag if ... then )
+  : if ( -- h ) compile (if) here 0 , ; immediate
+  : else ( h -- h' ) >r compile (else) here 0 , here r@ - cell/ r> ! ; immediate
+  : then ( h -- ) compile (then) here over - cell/ swap ! ; immediate
+ ( begin ... again )
+ ( begin ... flag until )
+ ( begin ... flag while ... repeat )
+  : begin ( -- h ) compile (begin) here ; immediate
+  : again ( h -- ) compile (again) here - cell/ , ; immediate
+  : until ( h -- ) compile (until) here - cell/ , ; immediate
+  : while ( h -- h h' ) compile (while) here 0 , ; immediate
+  : repeat ( h h' -- ) compile (repeat) swap here - cell/ , here over - cell/ swap ! ; immediate
+ ( ------------------------------------------------------ )
+ cr getMillis dup .( demo started at ) .
+ ( ------------------------------------------------------ )
+ 50 setPeriodHIGH 450 setPeriodLOW
+ wb_init ( initialize wifiboy 32 graphics )
+ 0 0 128 160 img wb_drawImage ( draw image tsuyu )
+ : drawLines ( define a code to draw lines )
+   42 for 1 1 r@ 3 * 1+ 159 wbYELLOW 1 wb_drawLine next
+   51 for 1 1 127 r@ 3 * 1+ wbYELLOW 1 wb_drawLine next
+ ; drawLines ( draw lines )
+ : drawtest
+   wbCYAN wbCYAN wb_setTextColor ( set text color )
+   z" WiFiBoy" 28 10 1 3 wb_drawString drop ( draw "WiFiBoy" )
+   z" blink03" 42 138 2 2 wb_drawString drop ( draw "blink03" )
+   wbWHITE wbWHITE wb_setTextColor ( set text color )
+   z" FVM02" 22 120 2 2 wb_drawString drop ( draw "Forth" )
+ ; drawtest
+ 1000 setPeriodHIGH 1000 setPeriodLOW
+ ( ------------------------------------------------------ )
+ cr getMillis dup .( demo ended at ) .
+ cr swap - .( demo cosumed ) . .( ms )
+ ( ------------------------------------------------------ )
+ : words context begin @ ?dup while dup .id repeat ;
+ : (forget) ( w -- ) ?dup 0= if exit then context
+   begin ( w a ) ?dup
+   while ( w w' ) @ 2dup =
+     if @ context ! 0
+     then
+   repeat drop ;
+ : forget ' (forget) ;
+ 27 constant screen
+ : blinks ( d n -- ) screen output 2*
+   begin ?dup
+   while 1- screen toggle over ms
+   repeat drop ;

@@ -1,0 +1,7 @@
+ 50 delayLOW ! ( flash per second )
+ 
+ 50 delayHIGH ! ( quick flash )
+ 
+ 25 led ! 25 output 17 output 17 high ( buzzer clicking )
+ 
+ 25 input ( turn of buzzer )
