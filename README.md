@@ -12,7 +12,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 在原程式執行同時, 接受另外定義的指令 進行 檢視、監控、測試、 ... 等工作,  或 直接改變 程式 執行狀態 與 效果。
 
 
-首先, 在所提供的 blinkxx 資料夾 中 有 fvm 與 wifiboy_lib 兩個子目錄, 以及 fvm_0wordset、fvm_6wordset、fvm_wifiboy_libWordset
+首先, 在所提供的 fvm-blinkxx 資料夾 中 有 fvm 與 wifiboy_lib 兩個子目錄, 以及 fvm_0wordset、fvm_6wordset、fvm_wifiboy_libWordset
 三個指令集, 請先 複製 這些子目錄 到 Arduino user 的 libraries 工作子目錄。
 例如 其在 windows 通常可能的 路徑是:
 
