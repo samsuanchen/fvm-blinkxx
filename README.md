@@ -33,6 +33,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink00 範例 
 
 
+<img src="jpg/arduinoIDE.jpg" height=300>
+
+
 		// blink00.ino the Arduino basic blink
 		#define LED_BUILTIN 16            // for WIFIBOY
 		void setup() {
