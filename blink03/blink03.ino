@@ -11,8 +11,8 @@ void setDelayLOW()  { delayLOW =F.dPop(); }       // ##### 2.2. define the funct
 void setLed()       { led      =F.dPop(); }       // ##### 2.3. define the function setLed
 void output() { pinMode(F.dPop(), OUTPUT); }      // ##### 2.4. define the function output
 void input()  { pinMode(F.dPop(),  INPUT); }      // ##### 2.5. define the function input
-void high()  { digitalWrite(F.dPop(), HIGH); }    // ##### 2.6. define the function high
-void low()   { digitalWrite(F.dPop(),  LOW); }    // ##### 2.7. define the function low
+void high() { digitalWrite(F.dPop(), HIGH); }     // ##### 2.6. define the function high
+void low()  { digitalWrite(F.dPop(),  LOW); }     // ##### 2.7. define the function low
 void setup() {
   F.init( 115200 );                           // ##### 3.1. in setup(), initialize F 
   F.newPrimitive( "setDelayHIGH", setDelayHIGH ); // ##### 4.1. add new primitive word setDelayHIGH in F
