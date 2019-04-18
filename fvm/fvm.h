@@ -1,7 +1,7 @@
 // fvm.h
 #ifndef _FVM_H_
 #define _FVM_H_
-#define fvm_logo "//  fvm - Forth Virtual Machine 1.0  20190408  //\n"
+#define fvm_logo "//  fvm - Forth Virtual Machine 1.0  20190417  //\n"
 #include <arduino.h>
 //////////////////////////////////////////////////////////////////////////////////////////////
 #define LED_BUILTIN 16

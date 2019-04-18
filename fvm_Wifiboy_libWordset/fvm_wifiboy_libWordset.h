@@ -2,7 +2,7 @@
 #ifndef WORD_SET
 #define WORD_SET
 //                    "/////////////////////////////////////////////////"
-char* word_set_logo = "//    fvm wifiboy_lib wordset 1.0  20190408    //\n";
+char* word_set_logo = "//    fvm wifiboy_lib wordset 1.0  20190417    //\n";
 //                    "/////////////////////////////////////////////////"
 #include <Arduino.h>
 #include <math.h>

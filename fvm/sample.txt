@@ -1,0 +1,1 @@
+This is a sample text to save as a file in esp32 flash file system.
