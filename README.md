@@ -240,15 +240,17 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 		void input()  { pinMode(F.dPop(),  INPUT); }      // ##### 2.5. define the function input
 		void high()  { digitalWrite(F.dPop(), HIGH); }    // ##### 2.6. define the function high
 		void low()   { digitalWrite(F.dPop(),  LOW); }    // ##### 2.7. define the function low
+		void paren() { F.parseToken(')'); }                     // ##### 2.8. define the function paren
 		void setup() {
-		  F.init( 115200 );                       	  // ##### 3.1. in setup(), initialize F 
-		  F.newPrimitive( "setDelayHIGH", setDelayHIGH ); // ##### 4.1. add new primitive word setDelayHIGH in F
-		  F.newPrimitive( "setDelayLOW",  setDelayLOW  ); // ##### 4.2. add new primitive word setDelayLOW  in F
-		  F.newPrimitive( "setLed"     ,  setLed       ); // ##### 4.3. add new primitive word setLed       in F
-		  F.newPrimitive( "output"     ,  output       ); // ##### 4.3. add new primitive word output       in F
-		  F.newPrimitive(  "input"     ,   input       ); // ##### 4.3. add new primitive word  input       in F
-		  F.newPrimitive(   "high"     ,    high       ); // ##### 4.3. add new primitive word   high       in F
-		  F.newPrimitive(    "low"     ,     low       ); // ##### 4.3. add new primitive word    low       in F
+		  F.init( 115200 );                                     // ##### 3.1. in setup(), initialize F
+		  F.newPrimitive( "setDelayHIGH", setDelayHIGH );       // ##### 4.1. add new primitive word setDelayHIGH in F
+		  F.newPrimitive( "setDelayLOW",  setDelayLOW  );       // ##### 4.2. add new primitive word setDelayLOW  in F
+		  F.newPrimitive( "setLed"     ,  setLed       );       // ##### 4.3. add new primitive word setLed       in F
+		  F.newPrimitive( "output"     ,  output       );       // ##### 4.3. add new primitive word output       in F
+		  F.newPrimitive(  "input"     ,   input       );       // ##### 4.3. add new primitive word  input       in F
+		  F.newPrimitive(   "high"     ,    high       );       // ##### 4.3. add new primitive word   high       in F
+		  F.newPrimitive(    "low"     ,     low       );       // ##### 4.3. add new primitive word    low       in F
+		  F.newPrimitive( "(",  "paren",   paren       );       // ##### 4.8. add new primitive word      (       in F
 		  pinMode(led, OUTPUT);			// set led pin as output
 		}
 		void loop() {
@@ -263,7 +265,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 這範例 藉 #include <fvm_0Wordset.h> 不載入任何事先定義的指令集。 我們可直接定義 自己的新指令, 以執行相關 控制功能。
 此例特別針對 原來 blink02.ino 中的三個 控制變數 (delayHIGH, delayLOW, led), 分別定義各自的 執行指令 來 設定其值。
 這樣或許比較可以確保系統安全, 不讓 FVM 用 驚嘆號指令 直接設定 記憶體 內容,
-改由自己定義的 Arduino fuctions 來設定 控制變數 的值。另外, 我們也自行定義了 4 個所需的 IO 指令。
+改由自己定義的 Arduino fuctions 來設定 控制變數 的值。另外, 我們也自行定義了 4 個所需的 IO 指令 以及 右括號 註解指令。
 
 1. 在原來 blink02.ino 的 setup() 前, 定義 Arduino functions, 用以 改變 led 維持 亮/滅 的 時間, led pin 腳 的 GPIO 編號, 以及所需 IO 指令。
 
@@ -275,6 +277,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 		void input()  { pinMode(F.dPop(),  INPUT); }      // ##### 2.5. define the function input
 		void high()  { digitalWrite(F.dPop(), HIGH); }    // ##### 2.6. define the function high
 		void low()   { digitalWrite(F.dPop(),  LOW); }    // ##### 2.7. define the function low
+		void paren() { F.parseToken(')'); }               // ##### 2.8. define the function paren
 
 
      在 這些 function 中, 我們 用 F.dPop() 從 資料推疊 (data stack) 取得 執行該 function 所需的資料。 
@@ -282,6 +285,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 2. 在原來 blink02.ino 的 setup() 中, 以 newPrimitiv() 取代 newVariable(), 來定義 3 個設定變數值的 新指令, 以及 4 個 IO 指令。
 分別以 指令名稱 去執行 所對應的 Arduino function。
+請注意! 若我們 在 FVM 中所用的 指令名稱 不同於 其要執行的 Arduino function 名稱, 這兩個名稱字串 都必須當作 newPrimitiv() 的參數。
 
 
 		F.newPrimitive( "setDelayHIGH", setDelayHIGH );    // ##### 4.1. add new primitive word setDelayHIGH in F
@@ -291,7 +295,8 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 		F.newPrimitive(  "input"     ,   input       );    // ##### 4.3. add new primitive word  input       in F
 		F.newPrimitive(   "high"     ,    high       );    // ##### 4.3. add new primitive word   high       in F
 		F.newPrimitive(    "low"     ,     low       );    // ##### 4.3. add new primitive word    low       in F
-  
+		F.newPrimitive( "(",  "paren",   paren       );    // ##### 4.8. add new primitive word      (       in F
+
 
 一旦這樣, 程式啟動後, 在 閃 led 同時, 我們打開 Arduino IDE 的 Serial Monitor
 從 輸入格 中, 就可逐行輸入下列指令, 一樣可 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音 (隨後分別詳加說明)。
@@ -526,6 +531,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 		void input()   { pinMode(F.dPop(),  INPUT); }           // ##### 2.5. define the function input
 		void high() { digitalWrite(F.dPop(), HIGH); }           // ##### 2.6. define the function high
 		void low()  { digitalWrite(F.dPop(),  LOW); }           // ##### 2.7. define the function low
+		void paren() { F.parseToken(')'); }                     // ##### 2.8. define the function paren
 		void setup() {
 		  F.init( 115200 );                                     // ##### 3.1. in setup(), initialize F
 		  F.newPrimitive( "setDelayHIGH", setDelayHIGH );       // ##### 4.1. add new primitive word setDelayHIGH in F
@@ -535,6 +541,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 		  F.newPrimitive(  "input"     ,   input       );       // ##### 4.3. add new primitive word  input       in F
 		  F.newPrimitive(   "high"     ,    high       );       // ##### 4.3. add new primitive word   high       in F
 		  F.newPrimitive(    "low"     ,     low       );       // ##### 4.3. add new primitive word    low       in F
+		  F.newPrimitive( "(",  "paren",   paren       );       // ##### 4.8. add new primitive word      (       in F
 		  pinMode(led, OUTPUT);                                 // set led pin as output level become LOW)
 		}
 		void loop() {
@@ -560,6 +567,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 		void input()  { pinMode(F.dPop(),  INPUT); }      // ##### 2.5. define the function input
 		void high()  { digitalWrite(F.dPop(), HIGH); }    // ##### 2.6. define the function high
 		void low()   { digitalWrite(F.dPop(),  LOW); }    // ##### 2.7. define the function low
+		void paren() { F.parseToken(')'); }               // ##### 2.8. define the function paren
 
 
 2. 在原來 blink12 範例, setup() 中, 以 newPrimitiv() 取代 newVariable(), 來定義 3 個設定變數值的 新指令, 以及 4 個 IO 指令。
@@ -569,11 +577,12 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 		F.newPrimitive( "setDelayHIGH", setDelayHIGH );    // ##### 4.1. add new primitive word setDelayHIGH in F
 		F.newPrimitive( "setDelayLOW",  setDelayLOW  );    // ##### 4.2. add new primitive word setDelayLOW  in F
 		F.newPrimitive( "setLed"     ,  setLed       );    // ##### 4.3. add new primitive word setLed       in F
-		F.newPrimitive( "output"     ,  output       );    // ##### 4.3. add new primitive word output       in F
-		F.newPrimitive(  "input"     ,   input       );    // ##### 4.3. add new primitive word  input       in F
-		F.newPrimitive(   "high"     ,    high       );    // ##### 4.3. add new primitive word   high       in F
-		F.newPrimitive(    "low"     ,     low       );    // ##### 4.3. add new primitive word    low       in F
-  
+		F.newPrimitive( "output"     ,  output       );    // ##### 4.4. add new primitive word output       in F
+		F.newPrimitive(  "input"     ,   input       );    // ##### 4.5. add new primitive word  input       in F
+		F.newPrimitive(   "high"     ,    high       );    // ##### 4.6. add new primitive word   high       in F
+		F.newPrimitive(    "low"     ,     low       );    // ##### 4.7. add new primitive word    low       in F
+		F.newPrimitive( "(",  "paren",   paren       );    // ##### 4.8. add new primitive word      (       in F
+
 
 一旦這樣, 程式啟動後, 在 閃 led 同時, 我們打開 Arduino IDE 的 Serial Monitor
 從 輸入格 中, 就可逐行輸入下列指令, 一樣可 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音 (隨後分別詳加說明)。

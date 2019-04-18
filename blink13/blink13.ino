@@ -1,30 +1,34 @@
-/* blink13.ino
-  Open Arduino IDE Serial Monitor, from input box we may try the following one by one:
-  50 setDelayLOW      ( Let the led become short flash per second. 讓燈每秒短暫閃亮 )
-  50 setDelayHIGH     ( Let the led become flash quickly. 讓燈快速閃亮 )
-  17 output 17 high 25 setLed 25 output ( Let the buzzer hum. 讓蜂鳴器滴答作響 )
-  25 input            ( Let the buzzer off. 讓蜂鳴器關閉 )
-*/
-int  led          =   16;
-int  delayHIGH    = 1000;
-int  delayLOW     = 1000;
-int levelToChange = HIGH;
-int  timeToChange = delayLOW;
-#include <fvm.h>                                          // ##### 1.1. FVM class the Forth virtual machine
-FVM F;                                                    // ##### 1.2. define F as an instence of FVM
-void setDelayHIGH() { delayHIGH=F.dPop(); }               // ##### 2.1. define new function setDelayHIGH
-void setDelayLOW()  { delayLOW =F.dPop(); }               // ##### 2.2. define new function setDelayLOW
-void setLed()       { led      =F.dPop(); }               // ##### 2.3. define new function setLed
+// blink03.ino having new words to execute
+#define LED_BUILTIN 16          // for WIFIBOY
+int led          = LED_BUILTIN; // led pin GPIO number
+int delayHIGH    = 1000;        // delay period keep keeping led pin level HIGH
+int delayLOW     = 1000;        // delay period keep keeping led pin level LOW
+#include <fvm.h>                                  // ##### 1.1. load FVM class, the Forth virtual machine
+#include <fvm_0Wordset.h>                         // ##### 1.2. load wordset for FVM
+FVM F;                                            // ##### 1.3. define F as an instence of FVM
+void setDelayHIGH() { delayHIGH=F.dPop(); }       // ##### 2.1. define the function setDelayHIGH
+void setDelayLOW()  { delayLOW =F.dPop(); }       // ##### 2.2. define the function setDelayLOW
+void setLed()       { led      =F.dPop(); }       // ##### 2.3. define the function setLed
+void output() { pinMode(F.dPop(), OUTPUT); }      // ##### 2.4. define the function output
+void input()  { pinMode(F.dPop(),  INPUT); }      // ##### 2.5. define the function input
+void high() { digitalWrite(F.dPop(), HIGH); }     // ##### 2.6. define the function high
+void low()  { digitalWrite(F.dPop(),  LOW); }     // ##### 2.7. define the function low
+void paren() { F.parseToken(')'); }               // ##### 2.8. define the function paren
 void setup() {
-  F.init( 115200 );                                       // ##### 3.1. in setup(), initialize F and the word set
-  F.newPrimitive( "setDelayHIGH", setDelayHIGH );         // ##### 4.1. add new primitive word setDelayHIGH in F
-  F.newPrimitive( "setDelayLOW" , setDelayLOW  );         // ##### 4.2. add new primitive word setDelayLOW  in F
-  F.newPrimitive( "setLed"      , setLed       );         // ##### 4.3. add new primitive word getMillis    in F
-  pinMode(led, OUTPUT);                                   // set led pin for output (pin level become LOW)
+  F.init( 115200 );                               // ##### 3.1. in setup(), initialize F 
+  F.newPrimitive( "setDelayHIGH", setDelayHIGH ); // ##### 4.1. add new primitive word setDelayHIGH in F
+  F.newPrimitive( "setDelayLOW",  setDelayLOW  ); // ##### 4.2. add new primitive word setDelayLOW  in F
+  F.newPrimitive( "setLed"     ,  setLed       ); // ##### 4.3. add new primitive word setLed       in F
+  F.newPrimitive( "output"     ,  output       ); // ##### 4.4. add new primitive word output       in F
+  F.newPrimitive(  "input"     ,   input       ); // ##### 4.5. add new primitive word  input       in F
+  F.newPrimitive(   "high"     ,    high       ); // ##### 4.6. add new primitive word   high       in F
+  F.newPrimitive(    "low"     ,     low       ); // ##### 4.7. add new primitive word    low       in F
+  F.newPrimitive( "(",  "paren",   paren       ); // ##### 4.8. add new primitive word      (       in F
+  pinMode(led, OUTPUT);     // set led pin as output
 }
 void loop() {
-  if( millis() < timeToChange ) return;                   // do nothing before time to change
-  digitalWrite( led, levelToChange );                     // change led pin level
-  timeToChange += levelToChange ? delayHIGH : delayLOW;   // next time to change led pin level
-  levelToChange = HIGH - levelToChange;                   // next led pin level to change
+  digitalWrite(led, HIGH);     // set led pin level as HIGH
+  delay(delayHIGH);            // wait a second
+  digitalWrite(led, LOW);      // set led pin level as LOW
+  delay(delayLOW);             // wait a second
 }
