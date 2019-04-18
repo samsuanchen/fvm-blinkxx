@@ -5,7 +5,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 以逐步展示 如何為 Arduino 原 blink 程式同步開啟一個 可以自我監控檢視的 通道。
 
 
-<img src="jpg/wifiboy32greenFront.jpg" height=300> <img src="jpg/wifiboy32greenBack.jpg" height=300>
+<img src="jpg/wifiboy32greenFront.jpg" width=400> <img src="jpg/wifiboy32greenBack.jpg" width=400>
 
 
 這自我監控檢視的 機制, 就是可以在 Arduino 原 blink 程式中, 同步啟動 本文所提供的 FVM 機制 (virtual monitor)。
@@ -33,7 +33,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink00 範例 
 
 
-<img src="jpg/arduinoIDE-blink00.jpg" height=300>
+<img src="jpg/arduinoIDE-blink00.jpg" width=400>
 
 
 		// blink00.ino the Arduino basic blink
@@ -57,7 +57,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink01 範例 
 
 
-<img src="jpg/arduinoIDE-blink01.jpg" height=300>
+<img src="jpg/arduinoIDE-blink01.jpg" width=400>
 
 
 		// blink01.ino having F as an instence of FVM to play
@@ -96,7 +96,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 一旦 啟動了 FVM 機制, 在 閃 led 同時, 我們就可以打開 Arduino IDE 的 Serial Monitor。
 
 
-<img src="jpg/fvmSerialMonitor00.jpg" height=300> <img src="jpg/fvmSerialMonitor01.jpg" height=300>
+<img src="jpg/fvmSerialMonitor00.jpg" width=400> <img src="jpg/fvmSerialMonitor01.jpg" width=400>
 
 請注意! 首次啟動 Serial Monitor 時, 記得其下緣需要點選「Carrige return」的選項。
 然後在上方 input box 中, 逐行 分別輸入下列指令, 點 右側 Send 按鈕, 就會: 關 led 燈、開屏幕背光、讓蜂鳴器發 C4 音、再多發 E4 與 A4 兩個音、讓蜂鳴器靜音、
@@ -142,7 +142,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink02 範例 
 
 
-<img src="jpg/arduinoIDE-blink02.jpg" height=300>
+<img src="jpg/arduinoIDE-blink02.jpg" width=400>
 
 
 		// blink02.ino having 3 control variables to test
@@ -222,7 +222,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink03 範例
 
 
-<img src="jpg/arduinoIDE-blink03.jpg" height=300>
+<img src="jpg/arduinoIDE-blink03.jpg" width=400>
 
 
 		// blink03.ino having new words to execute
@@ -324,7 +324,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink10 範例
 
 
-<img src="jpg/arduinoIDE-blink10.jpg" height=300>
+<img src="jpg/arduinoIDE-blink10.jpg" width=400>
 
 
 		// blink10.ino not using delay() to keep led pin level LOW/HIGH
@@ -350,7 +350,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink11 範例
 
 
-<img src="jpg/arduinoIDE-blink11.jpg" height=300>
+<img src="jpg/arduinoIDE-blink11.jpg" width=400>
 
 
 		// blink11.ino having F as an instence of FVM to play
@@ -426,7 +426,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink12 範例
 
 
-<img src="jpg/arduinoIDE-blink12.jpg" height=300>
+<img src="jpg/arduinoIDE-blink12.jpg" width=400>
 
 
 		// blink12.ino having 3 control variable to test
@@ -507,7 +507,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 ## blink13 範例
 
 
-<img src="jpg/arduinoIDE-blink13.jpg" height=300>
+<img src="jpg/arduinoIDE-blink13.jpg" width=400>
 
 
 		// blink12.ino having 3 control variable to test
