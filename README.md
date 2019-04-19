@@ -397,7 +397,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 一旦 啟動了 FVM 機制, 像 blink01 一樣, 在 閃 led 同時, 我們就可以打開 Arduino IDE 的 Serial Monitor。
 從其 input box 中, 可逐行輸入下列指令, 以關 led 燈、開屏幕背光、讓蜂鳴器發 C4 音、再多發 E4 與 A4 兩個音、讓蜂鳴器靜音、
-讓屏幕顯示一張照片 維持 1 秒鐘 然後關閉屏幕 (隨後分別詳加說明)。
+讓屏幕顯示一張照片 維持 1 秒鐘 然後關閉屏幕。
 
 
 		16 input ( turn off led )
@@ -483,7 +483,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 
 一旦這樣, 程式啟動後, 在 閃 led 同時, 我們打開 Arduino IDE 的 Serial Monitor,
-就可以將下列指令, 逐行 反白 複製, 貼入 input box 中來執行, 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音 (隨後分別詳加說明)。
+就可以將下列指令, 逐行 反白 複製, 貼入 input box 中來執行, 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音。
 
 
 		50 delayLOW ! ( flash per second )
@@ -586,7 +586,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 
 一旦這樣, 程式啟動後, 在 閃 led 同時, 我們打開 Arduino IDE 的 Serial Monitor
-從 輸入格 中, 就可逐行輸入下列指令, 一樣可 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音 (隨後分別詳加說明)。
+從 輸入格 中, 就可逐行輸入下列指令, 一樣可 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音。
 
 
 		50 setDelayLOW ( flash per second )
