@@ -10,13 +10,9 @@
  
  wb_init 0 0 128 160 img wb_drawImage 1000 ms 27 low ( show image 1000 ms )
 
- : screenBlinks ( msDelay nToggles -- )
-   27 output ( set screen back light pin mode as OUTPUT )
-   ?dup ( duplicate nToggles if it's non-zero )
-   if 1- ( for-next counts down includes 0 )
-     for 27 toggle ( screen back light toggled ) dup ms ( delay specified time period )
-     next ( repeat toggling until nToggles times )
-   then drop ( pop msDelay )
- ;
+ : drawLines ( define a code to draw lines ) 27 high ( turn on screen )
+   42 for 1 1 r@ 3 * 1+ 159 wbYELLOW 1 wb_drawLine next ( draw 43 lines to bottom )
+   51 for 1 1 127 r@ 3 * 1+ wbYELLOW 1 wb_drawLine next ( draw 52 lines to left )
+ ; drawLines ( draw lines )
 
  200 5 screenBlinks
