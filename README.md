@@ -267,7 +267,8 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 這樣或許比較可以確保系統安全, 不讓 FVM 用 驚嘆號指令 直接設定 記憶體 內容,
 改由自己定義的 Arduino fuctions 來設定 控制變數 的值。另外, 我們也自行定義了 4 個所需的 IO 指令 以及 右括號 註解指令。
 
-1. 在原來 blink02.ino 的 setup() 前, 定義 Arduino functions, 用以 改變 led 維持 亮/滅 的 時間, led pin 腳 的 GPIO 編號, 以及所需 IO 指令。
+1. 在原來 blink02.ino 的 setup() 前, 定義 Arduino functions, 用以 改變 led 維持 亮/滅 的 時間, led pin 腳 的 GPIO 編號,
+設定 pin 腳的 輸入 或 輸出 mode, 設定 pin 腳的 電位, 以及 忽略當作註解的文字。
 
 
 		void setDelayHIGH() { delayHIGH=F.dPop(); }       // ##### 2.1. define the function setDelayHIGH
@@ -283,9 +284,9 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
      在 這些 function 中, 我們 用 F.dPop() 從 資料推疊 (data stack) 取得 執行該 function 所需的資料。 
 
 
-2. 在原來 blink02.ino 的 setup() 中, 以 newPrimitiv() 取代 newVariable(), 來定義 3 個設定變數值的 新指令, 以及 4 個 IO 指令。
-分別以 指令名稱 去執行 所對應的 Arduino function。
-請注意! 若我們 在 FVM 中所用的 指令名稱 不同於 其要執行的 Arduino function 名稱, 這兩個名稱字串 都必須當作 newPrimitiv() 的參數。
+2. 在原來 blink02.ino 的 setup() 中, 以 newPrimitiv() 取代 newVariable(), 來定義 3 個設定變數值的 新指令, 4 個 IO 指令,
+以及 註解指令。 分別以 指令名稱 去執行 所對應的 Arduino function。
+請注意! FVM 所用的 指令名稱 若不同於 其要執行的 Arduino function 名稱, 這兩個名稱字串 都需要當作 newPrimitiv() 的參數。
 
 
 		F.newPrimitive( "setDelayHIGH", setDelayHIGH );    // ##### 4.1. add new primitive word setDelayHIGH in F
@@ -299,7 +300,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 
 一旦這樣, 程式啟動後, 在 閃 led 同時, 我們打開 Arduino IDE 的 Serial Monitor
-從 輸入格 中, 就可逐行輸入下列指令, 一樣可 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音 (隨後分別詳加說明)。
+從 輸入格 中, 就可逐行輸入下列指令, 一樣可 讓 led 每秒短暫閃亮、讓 led 快閃、讓蜂鳴器滴答響、讓蜂鳴器靜音。
 
 
 		50 setDelayLOW ( flash per second )
