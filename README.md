@@ -343,7 +343,7 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 		void loop() {
 		  if( millis() < timeToChange ) return;     // wait until time to change
 		  digitalWrite(LED_BUILTIN, levelToChange );// set led pin level
-		  timeToChange += 1000; 				            // set next time to change
+		  timeToChange += 1000;                     // set next time to change
 		  levelToChange = HIGH - levelToChange;     // set next level to change
 		}
 
