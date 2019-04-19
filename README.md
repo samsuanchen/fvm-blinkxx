@@ -169,8 +169,8 @@ derek@wifiboy.org & lu.albert@gmail.com & samsuanchen@gmail.com
 
 
 這範例 主要是希望將 blink01.ino 中的常數 以 led, delayHIGH, delayLOW 這三個控制變數 來 取代, 以便 在不改變原程式執行流程下 進行監控。
-為了這樣簡單的監控, 其實我們並不需要 #include <fvm_wifiboy_libWordset.h> 載入那麼多事先定義的指令。在此, 我們試用一個精簡版的指令集。
-改用 #include <fvm_7wordset.h> 只載入 7 個所需指令。
+為了這樣簡單的監控, 其實我們並不需要 #include <fvm_wifiboy_libWordset.h> 載入那麼多事先定義的指令。在此, 我們可以試用一個精簡版的指令集。
+改用 #include <fvm_7wordset.h> 只載入 7 個所需指令 (當然, 在這樣的形況下, 若要執行沒有載入的指令, 是會出現錯誤訊息的)。
 接著, 在 blink01.ino 中多加幾行, 就可 利用 所載入的 驚嘆號 指令 來直接改變 這些控制變數的 值 (隨後詳加說明)。
 
 1. 在原 blink01.ino 的 #include <fvm.h> 前, 多加如下 3 行, 宣告 led, delayHIGH, delayLOW 為 3 個可讓 FVM 監控的 變數 以及 預設值:
